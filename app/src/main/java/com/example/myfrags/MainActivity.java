@@ -1,13 +1,14 @@
 package com.example.myfrags;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends FragmentActivity {
 
     private FragmentManager fragmentManager;
 
