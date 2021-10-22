@@ -1,11 +1,13 @@
 package com.example.myfrags;
 
+import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 public class Fragment1 extends Fragment {
@@ -21,6 +23,55 @@ public class Fragment1 extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_1, container, false);
 
+        Button buttonShuffle = (Button) view.findViewById(R.id.button);
+        Button buttonClockwise = (Button) view.findViewById(R.id.button2);
+        Button buttonHide = (Button) view.findViewById(R.id.button3);
+        Button buttonRestore = (Button) view.findViewById(R.id.button4);
+
+
+        buttonShuffle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (callback != null) callback.onButtonClickShuffle();
+            }
+        });
+
+        buttonClockwise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (callback != null) callback.onButtonClickClockwise();
+            }
+        });
+
+        buttonHide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (callback != null) callback.onButtonClickHide();
+            }
+        });
+
+        buttonRestore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (callback != null) callback.onButtonClickRestore();
+            }
+        });
+
+
         return view;
+    }
+
+    //1.
+    public interface OnButtonClickListener {
+        public void onButtonClickShuffle();
+        public void onButtonClickClockwise();
+        public void onButtonClickHide();
+        public void onButtonClickRestore();
+    }
+    //2.
+    private OnButtonClickListener callback = null;
+    //3.
+    public void setOnButtonClickListener(OnButtonClickListener callback) {
+        this.callback = callback;
     }
 }
